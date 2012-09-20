@@ -47,6 +47,9 @@ openerp.conf.server_wide_modules = ['web']
 # internal TODO: use openerp.conf.xxx when available
 conf = openerp.tools.config
 
+conf['xmlrpc'] = True
+conf['xmlrpc_port'] = 8070
+
 # Path to the OpenERP Addons repository (comma-separated for
 # multiple locations)
 conf["addons_path"] = "/opt/code/openerp/openobject-addons"
