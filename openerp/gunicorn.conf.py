@@ -15,6 +15,7 @@ import sys
 
 sys.path.append('/opt/code/openerp/openobject-server/')
 sys.path.append('/opt/code/openerp/openobject-addons/')
+sys.path.append('/opt/code/openerp/openerp-web/')
 
 import openerp
 
