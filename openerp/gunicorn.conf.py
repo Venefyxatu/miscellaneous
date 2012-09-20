@@ -14,6 +14,7 @@
 import sys
 
 sys.path.append('/opt/code/openerp/openobject-server/')
+sys.path.append('/opt/code/openerp/openobject-addons/')
 
 import openerp
 
@@ -63,5 +64,7 @@ conf["addons_path"] = "/opt/code/openerp/openobject-addons"
 
 # If --static-http-enable is used, path for the static web directory
 #conf['static_http_document_root'] = '/var/www'
+
+conf['logfile'] = '/var/log/openerp/openerp-server.log'
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
