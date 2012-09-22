@@ -1,0 +1,26 @@
+From 7c363d4c625420c3aa3c4c9b01f3f8f1e5a2915f Mon Sep 17 00:00:00 2001
+From: Erik <venefyxatu@gmail.com>
+Date: Thu, 20 Sep 2012 20:39:47 +0000
+Subject: [PATCH] Fix for git repo not getting updated to latest
+
+---
+ lib/puppet/provider/vcsrepo/git.rb |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/puppet/provider/vcsrepo/git.rb b/lib/puppet/provider/vcsrepo/git.rb
+index afd9963..4a3c806 100644
+--- a/lib/puppet/provider/vcsrepo/git.rb
++++ b/lib/puppet/provider/vcsrepo/git.rb
+@@ -192,7 +192,8 @@ Puppet::Type.type(:vcsrepo).provide(:git, :parent => Puppet::Provider::Vcsrepo)
+ 
+   def checkout(revision = @resource.value(:revision))
+     if !local_branch_revision? && remote_branch_revision?
+-      at_path { git_with_identity('checkout', '-b', revision, '--track', "#{@resource.value(:remote)}/#{revision}") }
++      #at_path { git_with_identity('checkout', '-b', revision, '--track', "#{@resource.value(:remote)}/#{revision}") }
++      at_path { git_with_identity('pull')}
+     else
+       at_path { git_with_identity('checkout', '--force', revision) }
+     end
+-- 
+1.7.9.5
+
