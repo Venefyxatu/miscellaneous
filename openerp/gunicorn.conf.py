@@ -56,10 +56,10 @@ conf["addons_path"] = "/opt/code/openerp/openobject-addons"
 
 # Optional database config if not using local socket
 #conf['db_name'] = 'mycompany'
-#conf['db_host'] = 'localhost'
-#conf['db_user'] = 'foo'
-#conf['db_port'] = 5432
-#conf['db_password'] = 'secret'
+conf['db_host'] = 'localhost'
+conf['db_user'] = 'openerp'
+conf['db_port'] = 5432
+conf['db_password'] = PASSWORD
 
 # OpenERP Log Level
 # DEBUG=10, DEBUG_RPC=8, DEBUG_RPC_ANSWER=6, DEBUG_SQL=5, INFO=20,
