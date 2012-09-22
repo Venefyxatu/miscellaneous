@@ -1,10 +1,16 @@
 #!/bin/bash
 
-apt-get install git
+cat << _EOF_ >> /etc/apt/sources.list.d/puppetlabs.list 
+deb http://apt.puppetlabs.com precise main 
+deb-src http://apt.puppetlabs.com precise main
+_EOF_
+
+apt-get update
+
 apt-get install puppet-common
 
-git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git /etc/puppet/modules
-git clone https://github.com/rcrowley/puppet-pip.git /etc/puppet/modules
+git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git /etc/puppet/modules/puppetlabs-vcsrepo
+git clone https://github.com/rcrowley/puppet-pip.git /etc/puppet/modules/puppet-pip.git
 
 puppet module install puppetlabs-stdlib
 puppet module install akumria-postgresql
