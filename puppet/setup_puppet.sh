@@ -16,6 +16,7 @@ puppet module install puppetlabs-stdlib
 puppet module install akumria-postgresql
 
 cp -r manifests/openerp /etc/puppet/manifests/
+cp manifests/site.pp /etc/puppet/manifests
 
 cd /etc/puppet/modules/puppetlabs-vcsrepo/
 patch -p1 < /home/ubuntu/miscellaneous/vcsrepo/git.patch
