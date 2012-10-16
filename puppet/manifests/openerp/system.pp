@@ -27,7 +27,7 @@ file { '/var/log/openerp':
 
 file { '/opt/code/openerp/openobject-server/gunicorn.conf.py':
    owner  => openerp,
-   group  -> openerp,
+   group  => openerp,
    ensure => file,
    source => '/opt/code/miscellaneous/openerp/gunicorn.conf.py',
    require => Vcsrepo['/opt/code/miscellaneous'],
