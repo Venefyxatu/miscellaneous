@@ -7,7 +7,8 @@ _EOF_
 
 apt-get update
 
-apt-get install -y puppet-common
+#@TODO why is the force-yes necessary and how to get rid of it?
+apt-get install --force-yes -y puppet-common
 
 git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git /etc/puppet/modules/puppetlabs-vcsrepo
 git clone https://github.com/rcrowley/puppet-pip.git /etc/puppet/modules/puppet-pip.git
