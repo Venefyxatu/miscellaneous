@@ -44,5 +44,6 @@ exec { "/bin/sed -i 's/PASSWORD/PASSWORD_HERE/' /etc/supervisord.conf":
 }
 
 exec { "/bin/sed -i 's/PASSWORD/\"PASSWORD_HERE\"/' /opt/code/openerp/openobject-server/gunicorn.conf.py":
-    require => Vcsrepo['/opt/code/openerp/openobject-server'],
+    require => [Vcsrepo['/opt/code/openerp/openobject-server'],
+                File [ '/opt/code/openerp/openobject-server/gunicorn.conf.py']]
 }
