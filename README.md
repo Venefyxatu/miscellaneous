@@ -7,3 +7,8 @@ Usage instructions
 * You need git installed: apt-get install git
 * Under manifests, replace PASSWORD\_HERE with your passwords
 * Run the script
+
+TODO
+====
+
+* Use master/agent configuration in puppet
