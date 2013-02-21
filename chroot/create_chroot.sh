@@ -22,6 +22,8 @@
 #   * emerge --sync in the chroot with localhost (that's your running system)
 #   * Chooses the first profile in the eselect list in the chroot
 #   * emerges vim in the chroot
+#
+# Used a lot of knowledge from https://blog.maxux.net/index.php?post/2012/12/09/Steam-Linux-on-Gentoo-amd64
 # ##############################################################################
 
 set -e  # Always Die is a good principle
@@ -77,7 +79,25 @@ emerge -v app-emulation/emul-linux-x86-baselibs \
           app-emulation/emul-linux-x86-soundlibs \
           app-emulation/emul-linux-x86-xlibs
 _EOF_
-    chroot ${CHROOT_DIR} /bin/bash -c /steam_prerequisites.sh
+
+    chmod 755 ${CHROOT_DIR}/steam_prerequisites.sh
+
+    chroot ${CHROOT_DIR} /bin/bash /steam_prerequisites.sh
+
+    cat >> ${CHROOT_DIR}/steam.sh << _EOF_
+#!/bin/bash
+wget http://media.steampowered.com/client/installer/steam.deb
+ar xv steam.deb
+tar -xvf data.tar.gz -C /
+cd /usr/
+mv lib/steam/ lib64/
+rm -r /usr/lib
+ln -s lib64 lib
+_EOF_
+
+    chmod 755 ${CHROOT_DIR}/steam.sh
+    chroot ${CHROOT_DIR} /bin/bash /steam.sh
+
 }
 
 function setup_chrootfiles {
@@ -173,10 +193,8 @@ create_base_configure_script
 chroot ${CHROOT_DIR} /bin/bash base_configure_chroot.sh
 
 chroot ${CHROOT_DIR} emerge vim
-#
-# DO NOT USE YET - CHROOTING DANGER AHEAD
-# Needs to be split into chroot-ready bits
-#setup_steam
+
+setup_steam
 
 popd
 
