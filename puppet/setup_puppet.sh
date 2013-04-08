@@ -13,6 +13,11 @@ apt-get install --force-yes -y puppet-common
 git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git /etc/puppet/modules/puppetlabs-vcsrepo
 git clone https://github.com/rcrowley/puppet-pip.git /etc/puppet/modules/puppet-pip.git
 
+git clone git@github.com:Venefyxatu/puppet-git.git /etc/puppet/modules/git
+git clone git@github.com:Venefyxatu/puppetlabs-mysql.git /etc/puppet/modules/mysql
+git clone git@github.com:Venefyxatu/puppet-python.git /etc/puppet/modules/python
+git clone https://github.com/puppetlabs/puppetlabs-stdlib /etc/puppet/modules/stdlib
+
 puppet module install puppetlabs-stdlib
 puppet module install akumria-postgresql
 
