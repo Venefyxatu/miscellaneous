@@ -15,12 +15,9 @@ package { 'zsh':
 }
 
 class { 'python':
-    version => '2',
+    version => 'system',
+    dev => false,
     virtualenv => true,
-}
-
-package { 'libxt':
-    ensure => latest,
 }
 
 package { 'lua':

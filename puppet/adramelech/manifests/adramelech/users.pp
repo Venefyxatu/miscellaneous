@@ -1,6 +1,8 @@
 user { 'erik':
     ensure => 'present',
     shell => '/bin/zsh',
+    home => "/home/erik",
+    managehome => true,
     require => Package['zsh'],
 }
 
@@ -64,9 +66,3 @@ file { '/home/erik/.tmux.conf':
     group => 'erik',
 }
 
-file { '/home/erik/.virtualenvs':
-    ensure => 'link',
-    target => '/projects/erik/virtualenvs',
-    owner => 'erik',
-    group => 'erik',
-}
