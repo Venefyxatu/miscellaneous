@@ -1,9 +1,14 @@
+group { 'admins':
+    ensure => 'present',
+}
+
 user { 'erik':
     ensure => 'present',
     shell => '/bin/zsh',
     home => "/home/erik",
     managehome => true,
-    require => Package['zsh'],
+    require => [Group['admins'], Package['zsh']],
+    groups => ['admins'],
 }
 
 file { '/home/erik/source':
@@ -62,6 +67,20 @@ file { '/home/erik/.gitconfig':
 file { '/home/erik/.tmux.conf':
     ensure => 'link',
     target => '/home/erik/source/Configurations/tmux/tmux.conf',
+    owner => 'erik',
+    group => 'erik',
+}
+
+file { '/home/erik/.vimrc':
+    ensure => 'link',
+    target => '/home/erik/source/Configurations/vim/vimrc',
+    owner => 'erik',
+    group => 'erik',
+}
+
+file { '/home/erik/.vim':
+    ensure => 'link',
+    target => '/home/erik/source/Configurations/vim/vim',
     owner => 'erik',
     group => 'erik',
 }

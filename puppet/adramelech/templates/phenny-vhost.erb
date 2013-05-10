@@ -1,0 +1,53 @@
+# ************************************
+# Default template in module puppetlabs-apache
+# Managed by Puppet
+# ************************************
+#
+Listen <%= port %>
+
+NameVirtualHost <%= vhost_name %>:<%= port %>
+<% if wsgi_python_home %>
+  WSGIPythonHome <%= wsgi_python_home %>
+<% end %>
+<VirtualHost <%= vhost_name %>:<%= port %>>
+  ServerName <%= srvname %>
+<% if serveradmin %>
+  ServerAdmin <%= serveradmin %>
+<% end %>
+
+  AliasMatch /([^/]*\.css) <%= mediaroot %>$1
+  AliasMatch /([^/]*\.jpg) <%= mediaroot %>$1
+  AliasMatch /([^/]*\.gif) <%= mediaroot %>$1
+
+<% if serveraliases.is_a? Array -%>
+<% serveraliases.each do |name| -%><%= "  ServerAlias #{name}\n" %><% end -%>
+<% elsif serveraliases != '' -%>
+<%= "  ServerAlias #{serveraliases}" %>
+<% end -%>
+  DocumentRoot <%= docroot %>
+  <% if wsgi_script %>
+    WSGIScriptAlias <%= wsgi_script_url %> <%= wsgi_script %>
+  <% end %>
+
+  <Directory <%= docroot %>>
+    Options <%= options %>
+    AllowOverride <%= Array(override).join(' ') %>
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  <Directory <%= mediaroot %>>
+    Options <%= options %>
+    AllowOverride <%= Array(override).join(' ') %>
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog <%= logroot %>/<%= name %>_error.log
+  LogLevel warn
+<% if access_log -%>
+  CustomLog <%= logroot %>/<%= name %>_access.log combined
+<% end -%>
+  ServerSignature Off
+</VirtualHost>
+

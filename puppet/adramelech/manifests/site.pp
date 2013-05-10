@@ -16,4 +16,5 @@ node 'adramelech' {
 
     include phenny::packages
     include phenny::configuration
+    include phenny::bots
 }
