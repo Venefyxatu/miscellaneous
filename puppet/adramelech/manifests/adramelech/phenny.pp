@@ -145,6 +145,22 @@ class phenny::configuration {
       require => File['/opt/projects'],
     }
 
+    file { '/opt/projects/evilphenny/modules/roulette.py':
+        ensure => 'link',
+        target => '/var/www/venefyxatu.be/phenny/phenny/roulette.py',
+        owner => 'erik',
+        group => 'erik',
+        require => Git::Repo['phennyfyxata-apache', 'evilphenny']
+    }
+
+    file { '/opt/projects/phenny/modules/hoichat.py':
+        ensure => 'link',
+        target => '/var/www/venefyxatu.be/phenny/phenny/hoichat.py',
+        owner => 'erik',
+        group => 'erik',
+        require => Git::Repo['phennyfyxata-apache', 'phenny_palmersbot']
+    }
+
     file { '/opt/projects/phenny/modules/nanowars.py':
         ensure => 'link',
         target => '/var/www/venefyxatu.be/phenny/phenny/nanowars.py',
@@ -170,6 +186,14 @@ class phenny::configuration {
     file { '/opt/projects/evilphenny/modules/lart.py':
         ensure => 'link',
         target => '/var/www/venefyxatu.be/phenny/phenny/lart.py',
+        owner => 'erik',
+        group => 'erik',
+        require => Git::Repo['phennyfyxata-apache', 'evilphenny']
+    }
+
+    file { '/opt/projects/evilphenny/lartstore.txt':
+        ensure => 'link',
+        target => '/var/www/venefyxatu.be/phenny/phenny/lartstore.txt',
         owner => 'erik',
         group => 'erik',
         require => Git::Repo['phennyfyxata-apache', 'evilphenny']
@@ -202,7 +226,7 @@ class phenny::bots {
 
     class { 'supervisor':
         enable_inet_server => true,
-        inet_server_port => '127.0.0.1:9001',
+        inet_server_port => '0.0.0.0:9001',
         inet_server_user => 'master',
         inet_server_pass => 'SUPERVISOR_PASSWORD',
         logfile_maxbytes => '100MB',
