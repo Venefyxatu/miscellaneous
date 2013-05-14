@@ -235,7 +235,7 @@ class phenny::bots {
     supervisor::service { 'phenny':
         ensure      => present,
         enable      => true,
-        command     => '/usr/bin/pidproxy /tmp/phenny.default.pid /opt/projects/phenny/phenny',
+        command     => '/usr/bin/pidproxy /home/erik/.phenny/phenny.default.pid /opt/projects/phenny/phenny',
         environment => "PYTHONPATH='/home/erik/.virtualenvs/phenny/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg:/usr/lib/portage/pym:/home/erik/.virtualenvs/phenny/lib64/python27.zip:/home/erik/.virtualenvs/phenny/lib64/python2.7:/home/erik/.virtualenvs/phenny/lib64/python2.7/plat-linux2:/home/erik/.virtualenvs/phenny/lib64/python2.7/lib-tk:/home/erik/.virtualenvs/phenny/lib64/python2.7/lib-old:/home/erik/.virtualenvs/phenny/lib64/python2.7/lib-dynload:/usr/lib/python2.7:/usr/lib64/python2.7:/usr/lib/python2.7/plat-linux2:/home/erik/.virtualenvs/phenny/lib/python2.7/site-packages:/home/erik/.virtualenvs/phenny/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg-info',HOME=/home/erik",
         directory   => '/opt/projects/phenny',
         user        => 'erik',
@@ -247,7 +247,7 @@ class phenny::bots {
     supervisor::service { 'evilphenny':
         ensure      => present,
         enable      => true,
-        command     => '/usr/bin/pidproxy /tmp/phenny.evil.pid /opt/projects/evilphenny/phenny -c /home/erik/.phenny/evil.py',
+        command     => '/usr/bin/pidproxy /home/erik/.phenny/phenny.evil.pid /opt/projects/evilphenny/phenny -c /home/erik/.phenny/evil.py',
         environment => "PYTHONPATH='/home/erik/.virtualenvs/phenny/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg:/usr/lib/portage/pym:/home/erik/.virtualenvs/phenny/lib64/python27.zip:/home/erik/.virtualenvs/phenny/lib64/python2.7:/home/erik/.virtualenvs/phenny/lib64/python2.7/plat-linux2:/home/erik/.virtualenvs/phenny/lib64/python2.7/lib-tk:/home/erik/.virtualenvs/phenny/lib64/python2.7/lib-old:/home/erik/.virtualenvs/phenny/lib64/python2.7/lib-dynload:/usr/lib/python2.7:/usr/lib64/python2.7:/usr/lib/python2.7/plat-linux2:/home/erik/.virtualenvs/phenny/lib/python2.7/site-packages:/home/erik/.virtualenvs/phenny/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg-info',HOME=/home/erik",
         directory   => '/opt/projects/evilphenny',
         user        => 'erik',
