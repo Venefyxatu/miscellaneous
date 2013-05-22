@@ -11,10 +11,7 @@ class phenny::packages {
         require => Portage::Package['dev-python/meld3'],
     }
 
-    portage::package { 'www-servers/apache':
-        ensure => 'latest',
-        use => ['apache2_modules_php'],
-    }
+    include common::packages
 
     portage::package { 'www-apache/mod_wsgi':
         ensure => 'latest',
@@ -91,6 +88,7 @@ class phenny::configuration {
         mediaroot => '/var/www/venefyxatu.be/phenny/phennyfyxata/media/scores/',
         vhost_name => '*',
         serveradmin => 'venefyxatu@gmail.com',
+        logroot => '/var/log/apache2',
         servername => 'phenny.venefyxatu.be',
         serveraliases => ['adramelech.venefyxatu.be'],
         wsgi_script => '/var/www/venefyxatu.be/phenny/phennyfyxata/apache/django.wsgi',

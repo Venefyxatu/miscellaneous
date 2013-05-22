@@ -14,7 +14,11 @@ node 'adramelech' {
         ensure => absent
       }
 
+    include common::packages
+
     include phenny::packages
     include phenny::configuration
     include phenny::bots
+
+    include tech::configuration
 }
