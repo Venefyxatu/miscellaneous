@@ -9,6 +9,8 @@ class tech::configuration {
     file { '/etc/ssl/tech':
         ensure => directory,
         source => 'puppet:///adramelech_files/ssl/tech',
+        recurse => true,
+        purge => false,
     }
 
     file { '/etc/apache2/vhosts.d/20-tech.venefyxatu.be.443.conf':
@@ -18,6 +20,8 @@ class tech::configuration {
     }
     
     apache::mod { 'rewrite': }
+    apache::mod { 'ssl': }
+    apache::mod { 'php5': }
 
     file { '/var/www/venefyxatu.be/tech.venefyxatu.be.tar.bz2':
         source => 'puppet:///adramelech_files/tech.venefyxatu.be.tar.bz2',
