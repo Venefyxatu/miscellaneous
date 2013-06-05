@@ -43,6 +43,19 @@ class tech::configuration {
         require => File['/var/www/venefyxatu.be/stories.venefyxatu.be.tar.bz2'],
     }
 
+    apache::vhost { 'stats.venefyxatu.be':
+        port => 80,
+        docroot => '/var/www/venefyxatu.be/tech/slimstat',
+        vhost_name => '*',
+        serveradmin => 'venefyxatu@gmail.com',
+        logroot => '/var/log/apache2',
+        servername => 'stats.venefyxatu.be',
+        options => 'FollowSymlinks',
+        override => 'All',
+        priority => 60,
+        template => 'apache/vhost.conf.erb',
+        configure_firewall => false,
+    }
 
 }
 
