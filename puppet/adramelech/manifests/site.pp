@@ -22,4 +22,7 @@ node 'adramelech' {
 
     include tech::database
     include tech::configuration
+
+    include roleplay::database
+    include roleplay::configuration
 }

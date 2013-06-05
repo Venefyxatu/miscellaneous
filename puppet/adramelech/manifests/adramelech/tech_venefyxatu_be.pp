@@ -19,10 +19,6 @@ class tech::configuration {
         require => [Exec['extract_tech.venefyxatu.be'], Apache::Mod['rewrite'], File['/etc/ssl/tech']],
     }
     
-    apache::mod { 'rewrite': }
-    apache::mod { 'ssl': }
-    apache::mod { 'php5': }
-
     file { '/var/www/venefyxatu.be/tech.venefyxatu.be.tar.bz2':
         source => 'puppet:///adramelech_files/tech.venefyxatu.be.tar.bz2',
     }

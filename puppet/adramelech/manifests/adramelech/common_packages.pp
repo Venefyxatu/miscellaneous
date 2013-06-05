@@ -10,6 +10,10 @@ class common::packages {
         use => ['apache2_modules_php'],
     }
 
+    apache::mod { 'rewrite': }
+    apache::mod { 'ssl': }
+    apache::mod { 'php5': }
+
     portage::package { 'dev-lang/php':
         ensure => 'latest',
         use => ['mysql', 'apache2', 'cli', 'sqlite'],
