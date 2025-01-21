@@ -15,6 +15,7 @@ jobs:
           echo "Running the workflow!"
           echo "Staging branch exists now"
           echo "Ooh, a dev branch"
+          echo "Are we going to see it this time?"
   always-run:
     runs-on: ubuntu-latest
     name: Do something else
