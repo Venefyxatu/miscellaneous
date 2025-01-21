@@ -14,3 +14,4 @@ jobs:
         run: |-
           echo "Running the workflow!"
           echo "Staging branch exists now"
+          echo "Ooh, a dev branch"
