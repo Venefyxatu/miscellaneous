@@ -17,6 +17,7 @@ jobs:
           echo "Staging branch exists now"
           echo "Ooh, a dev branch"
           echo "Are we going to see it this time?"
+          echo "Closing without merging"
   always-run:
     runs-on: ubuntu-latest
     name: Do something else
