@@ -1,0 +1,15 @@
+---
+name: Test Run on PR merge
+on:
+  pull_request:
+    types: [closed]
+    branches: [staging]
+jobs:
+  quick-test:
+    if: github.envent.pull_request.merged == true
+    runs-on: ubuntu-latest
+    name: Do something
+    steps:
+      - name: Show some output
+        run: |-
+          echo "Running the workflow!"
