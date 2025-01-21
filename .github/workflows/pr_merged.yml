@@ -14,3 +14,11 @@ jobs:
         run: |-
           echo "Running the workflow!"
           echo "Staging branch exists now"
+          echo "Ooh, a dev branch"
+  always-run:
+    runs-on: ubuntu-latest
+    name: Do something else
+    steps:
+      - name: Just a little output then
+        run: |-
+          echo "Should always run on closed PR"
