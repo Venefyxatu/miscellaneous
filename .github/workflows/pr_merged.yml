@@ -6,10 +6,22 @@ on:
     branches: [staging]
 jobs:
   quick-test:
-    if: github.envent.pull_request.merged == true
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' &&
+      github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     name: Do something
     steps:
       - name: Show some output
         run: |-
           echo "Running the workflow!"
+          echo "Staging branch exists now"
+          echo "Ooh, a dev branch"
+          echo "Are we going to see it this time?"
+          echo "Closing without merging"
+  always-run:
+    runs-on: ubuntu-latest
+    name: Do something else
+    steps:
+      - name: Just a little output then
+        run: |-
+          echo "Should always run on closed PR"
